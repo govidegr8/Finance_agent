@@ -1,0 +1,32 @@
+[project]
+name = "finance_agent"
+version = "1.0.0"
+description = "A finance research assistant using live market data and LLM analysis"
+authors = [{name = "Finance Agent Team"}]
+requires-python = ">=3.9"
+dependencies = [
+	"pydantic>=2.0",
+	"python-dotenv>=1.0",
+	"httpx>=0.27",
+	"google-genai>=1.0",
+	"yfinance>=0.2",
+]
+dynamic = ["optional-dependencies"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+optional-dependencies = {dev = {file = ["dev-requirements.txt"]}} # add packages for development in the dev-requirements.txt file
+
+[project.scripts]
+finance-agent = "finance_agent.__main__:main"
+
+[tool.ruff]
+line-length = 100
+lint.select = ["E", "F"]
+
+
+
+
